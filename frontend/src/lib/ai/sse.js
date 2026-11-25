@@ -28,7 +28,7 @@ export function parseSSEChunk(buffer) {
         }
         if (!dataLines.length && eventName === 'message') continue;
         const raw = dataLines.join('\n');
-        let data = {};
+        let data;
         try {
             data = raw ? JSON.parse(raw) : {};
         } catch {

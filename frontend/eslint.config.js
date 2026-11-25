@@ -52,7 +52,9 @@ export default [
         'no-unsafe',
         'require-render-return',
       ].map((rule) => [`react-features/${rule}`, 'error'])),
-      ...reactHooks.configs['recommended-latest'].rules,
+      // The two classic rules `recommended-latest` meant in react-hooks 5. In 7 it also enables the React Compiler rules.
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       'serverkit/no-static-inline-styles': 'warn',

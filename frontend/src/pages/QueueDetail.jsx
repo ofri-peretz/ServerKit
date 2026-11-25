@@ -185,7 +185,7 @@ const QueueDetail = () => {
 
     const handleSend = async (e) => {
         e.preventDefault();
-        let payload = {};
+        let payload;
         try {
             payload = JSON.parse(sendForm.payload);
         } catch (err) {

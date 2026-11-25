@@ -60,7 +60,7 @@ const ProtectionStatusCard = ({
         : 'Turn on to back up this site automatically.';
 
     // Inline status line (and, for the failed state, a deep-link to Jobs).
-    let statusLine = null;
+    let statusLine;
     let statusAction = null;
     if (statusKey === 'failed') {
         statusLine = `Last backup failed at ${formatWhen(policy.last_run_at)}`;

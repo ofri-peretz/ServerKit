@@ -87,7 +87,7 @@ export function rememberRedirect(location) {
  * post-login navigation is not the place to trust that assumption.
  */
 export function consumeRedirect() {
-    let raw = null;
+    let raw;
     try {
         raw = window.sessionStorage.getItem(STORAGE_KEY);
         window.sessionStorage.removeItem(STORAGE_KEY);
