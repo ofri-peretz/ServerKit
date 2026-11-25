@@ -1,6 +1,6 @@
 import js from '@eslint/js';
 import globals from 'globals';
-import reactPlugin from 'eslint-plugin-react';
+import reactFeatures from 'eslint-plugin-react-features';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import noStaticInlineStyles from './scripts/eslint-rules/no-static-inline-styles.mjs';
@@ -24,18 +24,36 @@ export default [
       },
     },
     plugins: {
-      react: reactPlugin,
+      'react-features': reactFeatures,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       serverkit: { rules: { 'no-static-inline-styles': noStaticInlineStyles } },
     },
     rules: {
       ...js.configs.recommended.rules,
-      ...reactPlugin.configs.flat.recommended.rules,
-      ...reactPlugin.configs.flat['jsx-runtime'].rules,
+      // The rules eslint-plugin-react's "recommended" and "jsx-runtime" configs enabled, under their react-features names.
+      ...Object.fromEntries([
+        'jsx-key',
+        'jsx-no-comment-textnodes',
+        'jsx-no-duplicate-props',
+        'jsx-no-target-blank',
+        'jsx-no-undef',
+        'jsx-uses-vars',
+        'no-children-prop',
+        'no-danger-with-children',
+        'no-deprecated',
+        'no-direct-mutation-state',
+        'no-find-dom-node',
+        'no-is-mounted',
+        'no-render-return-value',
+        'no-string-refs',
+        'no-unescaped-entities',
+        'no-unknown-property',
+        'no-unsafe',
+        'require-render-return',
+      ].map((rule) => [`react-features/${rule}`, 'error'])),
       ...reactHooks.configs['recommended-latest'].rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-      'react/prop-types': 'off',
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       'serverkit/no-static-inline-styles': 'warn',
 

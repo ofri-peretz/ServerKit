@@ -22,7 +22,7 @@ function CommandDialog({ children, shouldFilter, label, ...props }) {
 }
 
 const CommandInput = React.forwardRef(({ className, ...props }, ref) => (
-  /* eslint-disable-next-line react/no-unknown-property */
+  /* eslint-disable-next-line react-features/no-unknown-property */
   <div className="ui-command-input-wrapper" cmdk-input-wrapper="">
     <Search className="ui-command-input-icon" />
     <CommandPrimitive.Input
